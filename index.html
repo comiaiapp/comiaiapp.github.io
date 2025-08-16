@@ -1,213 +1,720 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ComiGPT – Your Local AI Companion</title>
-  <style>
-    /* Reset & Base */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #f4f4f7;
-      color: #333;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComiGPT - Private AI Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Layout */
-    header {
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    nav a {
-      margin-left: 1.5rem;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #007aff; }
+        :root {
+            --primary-color: #007AFF;
+            --secondary-color: #5856D6;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --background: #fbfbfd;
+            --surface: rgba(255, 255, 255, 0.8);
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+        }
 
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #ffffff, #f0f0f5);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #666;
-    }
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn {
-      padding: 0.8rem 1.5rem;
-      border-radius: 2rem;
-      background: #007aff;
-      color: #fff;
-      font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #007aff;
-      color: #007aff;
-    }
-    .btn-outline:hover {
-      background: #007aff;
-      color: #fff;
-    }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-primary: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --background: #000000;
+                --surface: rgba(28, 28, 30, 0.8);
+                --glass: rgba(255, 255, 255, 0.05);
+                --shadow: rgba(0, 0, 0, 0.3);
+            }
+        }
 
-    /* TestFlight Disclaimer */
-    .disclaimer {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #666;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 0.5rem;
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
-      max-width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* Features */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 4rem 2rem;
-    }
-    .feature {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-    .feature:hover { transform: translateY(-5px); }
-    .feature h3 { margin-bottom: 1rem; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    /* Demo */
-    .demo {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .demo video {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 1rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-    /* Footer */
-    footer {
-      padding: 2rem;
-      text-align: center;
-      background: #fff;
-      color: #666;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .download-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--primary-color)10, transparent 70%);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass);
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        /* Beta Badge */
+        .beta-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #FF3B30;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* App Preview */
+        .app-preview {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .preview-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .preview-mockup {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px var(--shadow);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .mockup-content {
+            background: var(--background);
+            border-radius: 16px;
+            padding: 1.5rem;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-bubble {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 20px 20px 5px 20px;
+            margin: 0.5rem 0;
+            max-width: 70%;
+            align-self: flex-end;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        .ai-bubble {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass);
+            padding: 1rem 1.5rem;
+            border-radius: 20px 20px 20px 5px;
+            margin: 0.5rem 0;
+            max-width: 70%;
+            align-self: flex-start;
+            animation: slideInLeft 0.5s ease-out 0.3s both;
+        }
+
+        /* Download Section */
+        .download-section {
+            padding: 80px 0;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .testflight-container {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testflight-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .beta-disclaimer {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: var(--background);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glass morphism utilities */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass);
+            border-radius: 20px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>ComiGPT</h1>
+    <!-- Navigation -->
     <nav>
-      <a href="#features">Features</a>
-      <a href="#demo">Demo</a>
-      <a href="#download">Download</a>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">ComiGPT</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#preview">Preview</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+                <a href="#download" class="download-btn">Get Started</a>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Your Local AI Companion</h2>
-    <p>Fast. Private. Always available on your device.</p>
-    <div class="buttons">
-      <a href="#" class="btn">Download on App Store</a>
-      <a href="#" class="btn btn-outline">Join TestFlight</a>
-    </div>
-    <div class="disclaimer">
-      <p><strong>Beta Access:</strong> This version is a pre-release. Expect some features to be in development.</p>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Private AI Chat<br>Reimagined</h1>
+            <p>Chat with private and local large language models. Fast, secure, and completely private on your Apple device.</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn-primary">
+                    Join Beta
+                    <span class="beta-badge">BETA</span>
+                </a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
 
-  <section id="features" class="features">
-    <div class="feature">
-      <h3>Fast</h3>
-      <p>Optimized for Apple Silicon</p>
-    </div>
-    <div class="feature">
-      <h3>Private</h3>
-      <p>Runs locally on your device</p>
-    </div>
-    <div class="feature">
-      <h3>Multiple Models</h3>
-      <p>Select from various models</p>
-    </div>
-    <div class="feature">
-      <h3>Image Capable</h3>
-      <p>Work with images in the chat</p>
-    </div>
-    <div class="feature">
-      <h3>Powerful Search</h3>
-      <p>Search within all messages</p>
-    </div>
-  </section>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized for Apple Silicon with incredible performance and responsiveness.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Completely Private</h3>
+                    <p>All processing happens locally on your device. Your conversations never leave your machine.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Multiple Models</h3>
+                    <p>Choose from a variety of language models to find the perfect fit for your needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📷</div>
+                    <h3>Image Capable</h3>
+                    <p>Work with images directly in your conversations for richer interactions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Powerful Search</h3>
+                    <p>Find any message instantly with our advanced search functionality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Crafted with Apple's design principles for an intuitive and delightful experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="demo" class="demo">
-    <h2>See ComiGPT in Action</h2>
-    <video autoplay muted loop playsinline>
-      <source src="demo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </section>
+    <!-- App Preview -->
+    <section id="preview" class="app-preview">
+        <div class="container">
+            <h2 class="section-title">See It in Action</h2>
+            <div class="preview-container">
+                <div class="preview-mockup">
+                    <div class="mockup-content">
+                        <div class="chat-bubble">Hello! Can you help me with coding?</div>
+                        <div class="ai-bubble">Absolutely! I'd be happy to help you with any coding questions. What programming language are you working with?</div>
+                        <div class="chat-bubble">I'm learning Swift for iOS development</div>
+                        <div class="ai-bubble">Great choice! Swift is a powerful language. What specific aspect would you like to explore?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="download" class="hero">
-    <h2>Get Started Today</h2>
-    <p>Download ComiGPT now and experience the future of AI on your device.</p>
-    <div class="buttons">
-      <a href="#" class="btn">App Store</a>
-      <a href="#" class="btn btn-outline">TestFlight</a>
-    </div>
-  </section>
+    <!-- Download Section -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <h2 class="section-title">Join the Beta</h2>
+            <div class="testflight-container">
+                <div class="testflight-logo">✈️</div>
+                <h3>Available on TestFlight</h3>
+                <p>Get early access to ComiGPT and help shape the future of private AI chat.</p>
+                
+                <div class="beta-disclaimer">
+                    <strong>⚠️ Beta Software Disclaimer:</strong><br>
+                    This is beta software and may contain bugs or incomplete features. Your feedback helps us improve the experience for everyone.
+                </div>
+                
+                <a href="#" class="btn-primary" style="margin-top: 1rem; display: inline-block;">
+                    Download on TestFlight
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>© 2025 ComiGPT. All rights reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ComiGPT</h4>
+                    <p>Private AI chat for everyone.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#preview">Preview</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--glass); padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2025 ComiGPT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'var(--surface)';
+                nav.style.boxShadow = '0 4px 20px var(--shadow)';
+            } else {
+                nav.style.backgroundColor = 'var(--surface)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards for staggered animation
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Add hover effects for interactive elements
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
