@@ -22,6 +22,7 @@
             --glass: rgba(255, 255, 255, 0.1);
             --shadow: rgba(0, 0, 0, 0.1);
             --gradient: linear-gradient(135deg, #2c2c2e 0%, #48484a 100%);
+            --border-light: rgba(0, 0, 0, 0.1);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -32,6 +33,7 @@
                 --surface: rgba(28, 28, 30, 0.8);
                 --glass: rgba(255, 255, 255, 0.05);
                 --shadow: rgba(0, 0, 0, 0.3);
+                --border-light: rgba(255, 255, 255, 0.1);
             }
 
             .logo-icon img {
@@ -40,6 +42,26 @@
 
             .hero-logo img {
                 content: url('ComiGPTDark.png');
+            }
+
+            .hero-logo video {
+                display: none;
+            }
+
+            .hero-logo video.dark-mode {
+                display: block;
+            }
+
+            .logo {
+                color: white !important;
+                -webkit-text-fill-color: white !important;
+                background: white !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+            }
+
+            .hero p {
+                color: white !important;
             }
         }
 
@@ -86,7 +108,7 @@
             background: var(--surface);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass);
+            border-bottom: 1px solid var(--border-light);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -181,6 +203,10 @@
             border-radius: 28px;
         }
 
+        .hero-logo video.dark-mode {
+            display: none;
+        }
+
         .hero h1 {
             font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 800;
@@ -240,7 +266,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            border: 1px solid var(--glass);
+            border: 1px solid var(--border-light);
             font-size: 1.1rem;
         }
 
@@ -279,7 +305,7 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass);
+            border: 1px solid var(--border-light);
             border-radius: 24px;
             padding: 2rem;
             transition: all 0.3s ease;
@@ -348,7 +374,7 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass);
+            border: 1px solid var(--border-light);
             border-radius: 24px;
             padding: 2rem;
             transition: all 0.3s ease;
@@ -427,7 +453,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.75rem 0;
-            border-bottom: 1px solid var(--glass);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .spec-label {
@@ -458,7 +484,7 @@
         }
 
         .preview-mockup {
-            animation: float 6s ease-in-out infinite;
+            /* Removed the float animation */
         }
 
         /* Screenshot Carousel - FIXED */
@@ -469,7 +495,7 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass);
+            border: 1px solid var(--border-light);
             border-radius: 24px;
             padding: 1rem;
             box-shadow: 0 25px 50px var(--shadow);
@@ -483,7 +509,7 @@
             overflow: hidden;
             border-radius: 16px;
             background: var(--background);
-            border: 2px solid var(--glass);
+            border: 2px solid var(--border-light);
         }
 
         .screenshot-slide {
@@ -588,7 +614,7 @@
             background: var(--glass);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass);
+            border: 1px solid var(--border-light);
             width: 48px;
             height: 48px;
             border-radius: 50%;
@@ -670,7 +696,7 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass);
+            border: 1px solid var(--border-light);
             border-radius: 24px;
             padding: 3rem;
             max-width: 600px;
@@ -751,11 +777,6 @@
             }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
         @keyframes slideInRight {
             from {
                 opacity: 0;
@@ -831,7 +852,7 @@
             background: var(--glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass);
+            border: 1px solid var(--border-light);
             border-radius: 20px;
         }
     </style>
@@ -865,6 +886,9 @@
                 <video autoplay loop muted playsinline>
                     <source src="ComiGPTAnimatedLogo.mp4" type="video/mp4">
                     <img src="ComiGPTLight.png" alt="ComiGPT Logo">
+                </video>
+                <video autoplay loop muted playsinline class="dark-mode">
+                    <source src="ComiGPTAnimatedLogoDark.mp4" type="video/mp4">
                 </video>
             </div>
             <h1>Private AI Chat<br><span class="gradient-text">Reimagined</span></h1>
@@ -1330,7 +1354,7 @@
             }
         });
 
-        // Intersection Observer for animations
+        // Intersection Observer for animations (faster animation)
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1345,11 +1369,11 @@
             });
         }, observerOptions);
 
-        // Observe feature cards and model cards for staggered animation
+        // Observe feature cards and model cards for staggered animation (shorter duration)
         document.querySelectorAll('.feature-card, .model-card').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(50px)';
-            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            card.style.transition = `all 0.4s ease ${index * 0.05}s`; // Reduced from 0.6s to 0.4s and 0.1s to 0.05s
             observer.observe(card);
         });
 
@@ -1363,6 +1387,29 @@
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+
+        // Dark mode logo switching
+        function updateVideoSources() {
+            const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const regularVideo = document.querySelector('.hero-logo video:not(.dark-mode)');
+            const darkModeVideo = document.querySelector('.hero-logo video.dark-mode');
+            
+            if (isDarkMode) {
+                if (regularVideo) regularVideo.style.display = 'none';
+                if (darkModeVideo) darkModeVideo.style.display = 'block';
+            } else {
+                if (regularVideo) regularVideo.style.display = 'block';
+                if (darkModeVideo) darkModeVideo.style.display = 'none';
+            }
+        }
+
+        // Listen for changes in color scheme
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateVideoSources);
+        }
+
+        // Initialize video display
+        updateVideoSources();
     </script>
 </body>
 </html>
