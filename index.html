@@ -446,10 +446,10 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        /* Screenshot Carousel */
+        /* Screenshot Carousel - FIXED */
         .screenshot-carousel {
             position: relative;
-            max-width: 900px;
+            max-width: 400px;
             margin: 0 auto;
             background: var(--glass);
             backdrop-filter: blur(20px);
@@ -464,10 +464,11 @@
         .screenshot-container {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 600px;
             overflow: hidden;
             border-radius: 16px;
             background: var(--background);
+            border: 2px solid var(--glass);
         }
 
         .screenshot-slide {
@@ -488,6 +489,37 @@
 
         .screenshot-slide.prev {
             transform: translateX(-100%);
+        }
+
+        .screenshot-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 16px;
+        }
+
+        .screenshot-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            text-align: center;
+        }
+
+        .screenshot-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
         }
 
         .screenshot-placeholder {
@@ -532,20 +564,6 @@
             margin-top: 80px;
             padding: 2rem;
             text-align: center;
-        }
-
-        .screenshot-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .screenshot-description {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.6;
-            max-width: 400px;
         }
 
         /* Navigation Arrows */
@@ -781,6 +799,15 @@
 
             .model-specs {
                 grid-template-columns: 1fr;
+            }
+
+            .screenshot-carousel {
+                max-width: 320px;
+                padding: 1rem;
+            }
+
+            .screenshot-container {
+                height: 500px;
             }
         }
 
