@@ -33,6 +33,14 @@
                 --glass: rgba(255, 255, 255, 0.05);
                 --shadow: rgba(0, 0, 0, 0.3);
             }
+
+            .logo-icon img {
+                content: url('ComiGPTDark.png');
+            }
+
+            .hero-logo img {
+                content: url('ComiGPTDark.png');
+            }
         }
 
         body {
@@ -182,6 +190,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #ff1b6b 0%, #45caff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
@@ -449,14 +464,14 @@
         /* Screenshot Carousel - FIXED */
         .screenshot-carousel {
             position: relative;
-            max-width: 400px;
+            max-width: 350px;
             margin: 0 auto;
             background: var(--glass);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass);
             border-radius: 24px;
-            padding: 2rem;
+            padding: 1rem;
             box-shadow: 0 25px 50px var(--shadow);
             overflow: hidden;
         }
@@ -494,19 +509,13 @@
         .screenshot-image {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
             border-radius: 16px;
         }
 
-        .screenshot-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 2rem 1rem 1rem;
+        .screenshot-info {
+            padding: 1rem 0;
             text-align: center;
         }
 
@@ -514,11 +523,12 @@
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
 
         .screenshot-description {
             font-size: 0.9rem;
-            opacity: 0.9;
+            color: var(--text-secondary);
             line-height: 1.4;
         }
 
@@ -802,8 +812,8 @@
             }
 
             .screenshot-carousel {
-                max-width: 320px;
-                padding: 1rem;
+                max-width: 280px;
+                padding: 0.5rem;
             }
 
             .screenshot-container {
@@ -857,7 +867,7 @@
                     <img src="ComiGPTLight.png" alt="ComiGPT Logo">
                 </video>
             </div>
-            <h1>Private AI Chat<br>Reimagined</h1>
+            <h1>Private AI Chat<br><span class="gradient-text">Reimagined</span></h1>
             <p>Chat with private and local large language models. Fast, secure, and completely private on your Apple device.</p>
             <div class="cta-buttons">
                 <a href="#download" class="btn-primary">Download Now</a>
@@ -1110,56 +1120,38 @@
                             <!-- Screenshot 1: Main Screen -->
                             <div class="screenshot-slide active">
                                 <img src="main_screen.jpg" alt="ComiGPT Main Screen" class="screenshot-image">
-                                <div class="screenshot-overlay">
-                                    <div class="screenshot-title">Main Interface</div>
-                                    <div class="screenshot-description">Clean, intuitive main screen with easy access to all features</div>
-                                </div>
                             </div>
 
                             <!-- Screenshot 2: Chat Interface -->
                             <div class="screenshot-slide">
                                 <img src="chats.jpg" alt="ComiGPT Chat Interface" class="screenshot-image">
-                                <div class="screenshot-overlay">
-                                    <div class="screenshot-title">Chat Interface</div>
-                                    <div class="screenshot-description">Seamless conversations with your AI models in a beautiful chat interface</div>
-                                </div>
                             </div>
 
                             <!-- Screenshot 3: Chat Hello -->
                             <div class="screenshot-slide">
                                 <img src="chat_hello.jpg" alt="ComiGPT Chat Example" class="screenshot-image">
-                                <div class="screenshot-overlay">
-                                    <div class="screenshot-title">Natural Conversations</div>
-                                    <div class="screenshot-description">Start chatting naturally with your AI assistant</div>
-                                </div>
                             </div>
 
                             <!-- Screenshot 4: Model Selection -->
                             <div class="screenshot-slide">
                                 <img src="models.jpg" alt="ComiGPT Models" class="screenshot-image">
-                                <div class="screenshot-overlay">
-                                    <div class="screenshot-title">Choose Your Model</div>
-                                    <div class="screenshot-description">Select from multiple AI models optimized for different tasks</div>
-                                </div>
                             </div>
 
                             <!-- Screenshot 5: Model Installation -->
                             <div class="screenshot-slide">
                                 <img src="install_models.jpg" alt="ComiGPT Model Installation" class="screenshot-image">
-                                <div class="screenshot-overlay">
-                                    <div class="screenshot-title">Easy Installation</div>
-                                    <div class="screenshot-description">Download and install models with just a few taps</div>
-                                </div>
                             </div>
 
                             <!-- Screenshot 6: LLM Question -->
                             <div class="screenshot-slide">
                                 <img src="llm_question.jpg" alt="ComiGPT LLM Question" class="screenshot-image">
-                                <div class="screenshot-overlay">
-                                    <div class="screenshot-title">Intelligent Responses</div>
-                                    <div class="screenshot-description">Get detailed, thoughtful answers to your questions</div>
-                                </div>
                             </div>
+                        </div>
+
+                        <!-- Screenshot Info -->
+                        <div class="screenshot-info">
+                            <div class="screenshot-title" id="screenshot-title">Main Interface</div>
+                            <div class="screenshot-description" id="screenshot-description">Clean, intuitive main screen with easy access to all features</div>
                         </div>
 
                         <!-- Navigation -->
@@ -1237,6 +1229,23 @@
     <script>
         let currentSlideIndex = 1;
         const totalSlides = 6;
+        const slideData = [
+            { title: "Main Interface", description: "Clean, intuitive main screen with easy access to all features" },
+            { title: "Chat Interface", description: "Seamless conversations with your AI models in a beautiful chat interface" },
+            { title: "Natural Conversations", description: "Start chatting naturally with your AI assistant" },
+            { title: "Choose Your Model", description: "Select from multiple AI models optimized for different tasks" },
+            { title: "Easy Installation", description: "Download and install models with just a few taps" },
+            { title: "Intelligent Responses", description: "Get detailed, thoughtful answers to your questions" }
+        ];
+
+        function updateSlideInfo(slideIndex) {
+            const titleElement = document.getElementById('screenshot-title');
+            const descriptionElement = document.getElementById('screenshot-description');
+            const data = slideData[slideIndex - 1];
+            
+            titleElement.textContent = data.title;
+            descriptionElement.textContent = data.description;
+        }
 
         function showSlide(n) {
             const slides = document.querySelectorAll('.screenshot-slide');
@@ -1258,6 +1267,9 @@
             // Show current slide
             slides[currentSlideIndex - 1].classList.add('active');
             dots[currentSlideIndex - 1].classList.add('active');
+
+            // Update slide info
+            updateSlideInfo(currentSlideIndex);
 
             // Update arrow states
             prevArrow.classList.toggle('disabled', currentSlideIndex === 1);
