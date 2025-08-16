@@ -12,15 +12,16 @@
         }
 
         :root {
-            --primary-color: #007AFF;
-            --secondary-color: #5856D6;
+            --primary-color: #2c2c2e;
+            --secondary-color: #48484a;
+            --accent-color: #636366;
             --text-primary: #1d1d1f;
             --text-secondary: #86868b;
             --background: #fbfbfd;
             --surface: rgba(255, 255, 255, 0.8);
             --glass: rgba(255, 255, 255, 0.1);
             --shadow: rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            --gradient: linear-gradient(135deg, #2c2c2e 0%, #48484a 100%);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -46,6 +47,27 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* Logo styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         /* Navigation */
@@ -128,8 +150,24 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at center, var(--primary-color)10, transparent 70%);
-            opacity: 0.1;
+            opacity: 0.05;
             z-index: -1;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .hero h1 {
@@ -140,7 +178,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .hero p {
@@ -150,7 +188,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .cta-buttons {
@@ -158,7 +196,7 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.4s both;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .btn-primary {
@@ -191,20 +229,6 @@
         .btn-primary:hover, .btn-secondary:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 35px var(--shadow);
-        }
-
-        /* Beta Badge */
-        .beta-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #FF3B30;
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            animation: pulse 2s infinite;
         }
 
         /* Features Section */
@@ -290,11 +314,123 @@
             font-size: 1.1rem;
         }
 
+        /* Models Section */
+        .models {
+            padding: 80px 0;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .model-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .model-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .model-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .model-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .model-size {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .model-type {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .model-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .model-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--glass);
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .spec-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
         /* App Preview */
         .app-preview {
             padding: 80px 0;
             text-align: center;
             position: relative;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .preview-container {
@@ -353,9 +489,6 @@
         /* Download Section */
         .download-section {
             padding: 80px 0;
-            background: var(--surface);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             text-align: center;
         }
 
@@ -385,8 +518,8 @@
         }
 
         .beta-disclaimer {
-            background: rgba(255, 193, 7, 0.1);
-            border: 1px solid rgba(255, 193, 7, 0.3);
+            background: rgba(134, 134, 139, 0.1);
+            border: 1px solid rgba(134, 134, 139, 0.3);
             border-radius: 12px;
             padding: 1rem;
             margin: 2rem 0;
@@ -486,7 +619,7 @@
                 padding: 100px 0 60px;
             }
             
-            .features-grid {
+            .features-grid, .models-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -498,6 +631,10 @@
             .btn-primary, .btn-secondary {
                 width: 100%;
                 max-width: 280px;
+            }
+
+            .model-specs {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -521,9 +658,15 @@
     <nav>
         <div class="container">
             <div class="nav-container">
-                <div class="logo">ComiGPT</div>
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="ComiGPTLight.png" alt="ComiGPT Logo">
+                    </div>
+                    <div class="logo">ComiGPT</div>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#features">Features</a></li>
+                    <li><a href="#models">Models</a></li>
                     <li><a href="#preview">Preview</a></li>
                     <li><a href="#download">Download</a></li>
                 </ul>
@@ -535,13 +678,13 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <div class="hero-logo">
+                <img src="logo.png" alt="ComiGPT Logo">
+            </div>
             <h1>Private AI Chat<br>Reimagined</h1>
             <p>Chat with private and local large language models. Fast, secure, and completely private on your Apple device.</p>
             <div class="cta-buttons">
-                <a href="#download" class="btn-primary">
-                    Join Beta
-                    <span class="beta-badge">BETA</span>
-                </a>
+                <a href="#download" class="btn-primary">Download Now</a>
                 <a href="#features" class="btn-secondary">Learn More</a>
             </div>
         </div>
@@ -586,6 +729,200 @@
         </div>
     </section>
 
+    <!-- Models Section -->
+    <section id="models" class="models">
+        <div class="container">
+            <h2 class="section-title">Available Models</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div>
+                            <div class="model-name">Llama 3.2 1B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">0.7GB</div>
+                    </div>
+                    <div class="model-description">
+                        Meta's lightweight model optimized for edge devices. Perfect for everyday conversations and quick tasks with minimal resource usage.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.2B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Quantization</span>
+                            <span class="spec-value">4-bit</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Quick Tasks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div>
+                            <div class="model-name">Llama 3.2 3B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">1.8GB</div>
+                    </div>
+                    <div class="model-description">
+                        More capable version with better reasoning abilities. Ideal for complex conversations and detailed analysis while maintaining efficiency.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.2B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Quantization</span>
+                            <span class="spec-value">4-bit</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Detailed Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div>
+                            <div class="model-name">DeepSeek R1 Distill</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">1.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Advanced reasoning model distilled from DeepSeek R1. Excels at mathematical problems and step-by-step logical reasoning.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.5B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Quantization</span>
+                            <span class="spec-value">4-bit</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Math & Logic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div>
+                            <div class="model-name">Phi 3.5 Mini</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">2.2GB</div>
+                    </div>
+                    <div class="model-description">
+                        Microsoft's compact yet powerful model. Great balance of performance and efficiency for coding and instruction following.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.8B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Quantization</span>
+                            <span class="spec-value">4-bit</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Coding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div>
+                            <div class="model-name">Qwen 3 4B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">3.3GB</div>
+                    </div>
+                    <div class="model-description">
+                        Alibaba's latest model with enhanced reasoning capabilities. Excellent for complex problem-solving and multilingual tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">4.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Quantization</span>
+                            <span class="spec-value">6-bit</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div>
+                            <div class="model-name">Gemma 3 4B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">2.6GB</div>
+                    </div>
+                    <div class="model-description">
+                        Google's efficient model built on Gemma architecture. Strong performance across various tasks with excellent instruction following.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">4.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Quantization</span>
+                            <span class="spec-value">4-bit</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">8K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Instructions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- App Preview -->
     <section id="preview" class="app-preview">
         <div class="container">
@@ -606,14 +943,14 @@
     <!-- Download Section -->
     <section id="download" class="download-section">
         <div class="container">
-            <h2 class="section-title">Join the Beta</h2>
+            <h2 class="section-title">Get Started Today</h2>
             <div class="testflight-container">
                 <div class="testflight-logo">✈️</div>
                 <h3>Available on TestFlight</h3>
-                <p>Get early access to ComiGPT and help shape the future of private AI chat.</p>
+                <p>Experience the future of private AI chat on your Apple device.</p>
                 
                 <div class="beta-disclaimer">
-                    <strong>⚠️ Beta Software Disclaimer:</strong><br>
+                    <strong>Beta Software Notice:</strong><br>
                     This is beta software and may contain bugs or incomplete features. Your feedback helps us improve the experience for everyone.
                 </div>
                 
@@ -636,6 +973,7 @@
                     <h4>Product</h4>
                     <ul class="footer-links">
                         <li><a href="#features">Features</a></li>
+                        <li><a href="#models">Models</a></li>
                         <li><a href="#preview">Preview</a></li>
                         <li><a href="#download">Download</a></li>
                     </ul>
@@ -697,8 +1035,8 @@
             });
         }, observerOptions);
 
-        // Observe feature cards for staggered animation
-        document.querySelectorAll('.feature-card').forEach((card, index) => {
+        // Observe feature cards and model cards for staggered animation
+        document.querySelectorAll('.feature-card, .model-card').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(50px)';
             card.style.transition = `all 0.6s ease ${index * 0.1}s`;
@@ -706,7 +1044,7 @@
         });
 
         // Add hover effects for interactive elements
-        document.querySelectorAll('.feature-card').forEach(card => {
+        document.querySelectorAll('.feature-card, .model-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
             });
