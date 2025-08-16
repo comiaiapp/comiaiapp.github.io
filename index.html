@@ -63,6 +63,14 @@
             .hero p {
                 color: white !important;
             }
+
+            .hero h1 .main-title {
+                color: white !important;
+                -webkit-text-fill-color: white !important;
+                background: white !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+            }
         }
 
         body {
@@ -216,6 +224,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 .main-title {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero h1 .gradient-text {
@@ -891,7 +906,7 @@
                     <source src="ComiGPTAnimatedLogoDark.mp4" type="video/mp4">
                 </video>
             </div>
-            <h1>Private AI Chat<br><span class="gradient-text">Reimagined</span></h1>
+            <h1><span class="main-title">Private AI Chat</span><br><span class="gradient-text">Reimagined</span></h1>
             <p>Chat with private and local large language models. Fast, secure, and completely private on your Apple device.</p>
             <div class="cta-buttons">
                 <a href="#download" class="btn-primary">Download Now</a>
