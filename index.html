@@ -74,6 +74,14 @@
                 -webkit-background-clip: text !important;
                 background-clip: text !important;
             }
+
+            .section-title {
+                color: white !important;
+                -webkit-text-fill-color: white !important;
+                background: white !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+            }
         }
 
         body {
@@ -723,6 +731,63 @@
             color: var(--text-primary);
         }
 
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-container {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .contact-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .contact-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
         /* Download Section */
         .download-section {
             padding: 80px 0;
@@ -868,6 +933,28 @@
             .device-list {
                 grid-template-columns: 1fr;
             }
+
+            .contact-container {
+                padding: 2rem 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .contact-description {
+                font-size: 1rem;
+            }
+
+            .testflight-container {
+                padding: 2rem 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .qa-item {
+                padding: 1.5rem;
+            }
+
+            .qa-question {
+                font-size: 1.2rem;
+            }
         }
 
         /* Smooth scrolling */
@@ -932,6 +1019,7 @@
                     <li><a href="#compatibility">Compatibility</a></li>
                     <li><a href="#models">Models</a></li>
                     <li><a href="#qa">Q&A</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li><a href="#download">Download</a></li>
                 </ul>
                 <a href="#download" class="download-btn">Get Started</a>
@@ -951,7 +1039,7 @@
                     <source src="ComiGPTAnimatedLogoDark.mp4" type="video/mp4">
                 </video>
             </div>
-            <h1><span class="main-title">Private AI Chat</span><br><span class="gradient-text">Reimagined</span></h1>
+            <h1><span class="main-title" style="font-size: 1.2em;">ComiGPT</span><br><span class="gradient-text">Your AI Companion</span></h1>
             <p>Chat with private and local large language models. Fast, secure, and completely private on your Apple device.</p>
             <div class="cta-buttons">
                 <a href="#download" class="btn-primary">Download Now</a>
@@ -1710,6 +1798,24 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-icon">✉️</div>
+                <h3>Get in Touch</h3>
+                <p class="contact-description">
+                    Have questions, feedback, or need support? We'd love to hear from you. Reach out to us directly for assistance with ComiGPT.
+                </p>
+                
+                <a href="mailto:jakub.vyhnanek@gmail.com?subject=ComiGPT Inquiry" class="contact-btn">
+                    Send Email
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Download Section -->
     <section id="download" class="download-section">
         <div class="container">
@@ -1748,14 +1854,14 @@
                         <li><a href="#compatibility">Compatibility</a></li>
                         <li><a href="#models">Models</a></li>
                         <li><a href="#qa">Q&A</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <li><a href="#download">Download</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Support</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <li><a href="#">Privacy</a></li>
                     </ul>
                 </div>
