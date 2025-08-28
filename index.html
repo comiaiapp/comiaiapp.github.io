@@ -661,6 +661,68 @@
             border-top: 1px solid var(--border-light);
         }
 
+        /* Q&A Section */
+        .qa-section {
+            padding: 80px 0;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .qa-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .qa-item {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .qa-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .qa-question {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .qa-answer {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .qa-answer strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .qa-answer ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .qa-answer li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .qa-answer li strong {
+            color: var(--text-primary);
+        }
+
         /* Download Section */
         .download-section {
             padding: 80px 0;
@@ -869,6 +931,7 @@
                     <li><a href="#features">Features</a></li>
                     <li><a href="#compatibility">Compatibility</a></li>
                     <li><a href="#models">Models</a></li>
+                    <li><a href="#qa">Q&A</a></li>
                     <li><a href="#download">Download</a></li>
                 </ul>
                 <a href="#download" class="download-btn">Get Started</a>
@@ -1548,6 +1611,105 @@
         </div>
     </section>
 
+    <!-- Q&A Section -->
+    <section id="qa" class="qa-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="qa-grid">
+                <div class="qa-item">
+                    <h3 class="qa-question">What is the difference between the iOS and macOS versions?</h3>
+                    <div class="qa-answer">
+                        Both platforms allow you to select and download AI models. The macOS version supports larger models thanks to greater computing resources, while the iOS version provides models optimized for mobile performance. Regardless of platform, both versions prioritize privacy and offline processing.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Do I need an internet connection?</h3>
+                    <div class="qa-answer">
+                        An internet connection is only required for the initial app download and, on macOS, for downloading additional models. Once installed, all features operate completely offline. You can use the app anywhere—on a plane, in remote areas, or simply offline for maximum privacy.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How does offline AI work?</h3>
+                    <div class="qa-answer">
+                        Once an AI model is downloaded, all processing takes place locally on your device. This includes text generation, voice recognition, and other functions. No internet connection is required, and no data leaves your device.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">What types of AI models are supported?</h3>
+                    <div class="qa-answer">
+                        The app supports a wide range of open-source large language models, including:
+                        <ul>
+                            <li><strong>Regular models</strong></li>
+                            <li><strong>Reasoning models</strong></li>
+                            <li><strong>Vision models</strong> (image processing)</li>
+                            <li><strong>Multimodal models</strong> (image and video processing)</li>
+                        </ul>
+                        On iOS, you can choose from optimized models such as Llama, Qwen, SmolLM, Gemma, and others. On macOS, additional larger models are available, leveraging desktop hardware for greater performance.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Can the app process images with regular or reasoning models?</h3>
+                    <div class="qa-answer">
+                        Yes. When you upload an image while using a regular or reasoning model, the app automatically extracts text from the image and provides it to the model for processing.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Is my data private?</h3>
+                    <div class="qa-answer">
+                        Yes. All conversations are processed locally on your device, and no data is collected or stored externally. The AI model runs fully offline, ensuring that your prompts, conversations, and generated content never leave your device or reach third parties.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Is my conversation history private?</h3>
+                    <div class="qa-answer">
+                        Absolutely. Conversation history is stored locally on your device and encrypted for your security. No data is collected, no accounts are required, and no servers are involved. Privacy is ensured by design, not just by policy.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How does the conversation history feature work?</h3>
+                    <div class="qa-answer">
+                        Conversations are automatically saved locally, enabling you to revisit, review, and continue previous chats at any time. You can delete individual conversations, clear all history, or share selected chats—maintaining full control over your data.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How can I search through my chats?</h3>
+                    <div class="qa-answer">
+                        The app offers advanced search capabilities, allowing you to search through both your own messages and AI-generated responses. Text extracted from images (processed by regular or reasoning models) is also searchable.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Can I use the app with Apple Shortcuts?</h3>
+                    <div class="qa-answer">
+                        Yes. The app integrates seamlessly with Apple Shortcuts on both iOS and macOS. You can select AI models, adjust parameters, and incorporate AI into your automation workflows. This flexibility allows you to balance local models for privacy with cloud models for advanced capabilities, tailoring each workflow to your needs.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How is this different from ChatGPT?</h3>
+                    <div class="qa-answer">
+                        Unlike ChatGPT, which operates in the cloud, this app runs AI models directly on your device. This provides complete privacy, eliminates recurring subscription costs, and allows you to use AI features without an internet connection. On macOS, larger models bring capabilities closer to cloud-based services.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Will the app drain my battery?</h3>
+                    <div class="qa-answer">
+                        The app is optimized to take advantage of Apple's Neural Engine on both iOS and macOS. On iOS, specially optimized models balance performance with power efficiency. On macOS, additional larger models are available. While extended use of larger models may increase power consumption and device temperature, the app is designed for efficient resource usage.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Download Section -->
     <section id="download" class="download-section">
         <div class="container">
@@ -1585,6 +1747,7 @@
                         <li><a href="#features">Features</a></li>
                         <li><a href="#compatibility">Compatibility</a></li>
                         <li><a href="#models">Models</a></li>
+                        <li><a href="#qa">Q&A</a></li>
                         <li><a href="#download">Download</a></li>
                     </ul>
                 </div>
