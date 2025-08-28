@@ -660,32 +660,6 @@
             border-top: 1px solid var(--border-light);
         }
 
-        /* App Preview - Single Video */
-        .app-preview {
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            background: var(--surface);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .video-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px var(--shadow);
-        }
-
-        .preview-video {
-            width: 100%;
-            height: auto;
-            border-radius: 24px;
-            background: var(--background);
-        }
-
         /* Download Section */
         .download-section {
             padding: 80px 0;
@@ -705,8 +679,8 @@
         }
 
         .testflight-logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: var(--gradient);
             border-radius: 20px;
             margin: 0 auto 1.5rem;
@@ -894,7 +868,6 @@
                     <li><a href="#features">Features</a></li>
                     <li><a href="#compatibility">Compatibility</a></li>
                     <li><a href="#models">Models</a></li>
-                    <li><a href="#preview">Preview</a></li>
                     <li><a href="#download">Download</a></li>
                 </ul>
                 <a href="#download" class="download-btn">Get Started</a>
@@ -987,9 +960,9 @@
                         <div class="requirement-group">
                             <h4>iOS <span class="version">18.6+</span></h4>
                             <div class="device-list">
-                                <div class="device-item">iPhone XS, iPhone XS Max, iPhone XR</div>
-                                <div class="device-item">iPhone 11 series</div>
-                                <div class="device-item">iPhone SE (2nd & 3rd gen)</div>
+                                <div class="device-item">iPhone 11, iPhone 11 Pro, iPhone 11 Pro Max</div>
+                                <div class="device-item">iPhone SE (2nd gen, 2020)</div>
+                                <div class="device-item">iPhone SE (3rd gen, 2022)</div>
                                 <div class="device-item">iPhone 12 series</div>
                                 <div class="device-item">iPhone 13 series</div>
                                 <div class="device-item">iPhone 14 series</div>
@@ -1001,24 +974,28 @@
                         <div class="requirement-group">
                             <h4>iPadOS <span class="version">18.6+</span></h4>
                             <div class="device-list">
-                                <div class="device-item">iPad Pro (2018 and later)</div>
-                                <div class="device-item">iPad Air (3rd gen and later)</div>
-                                <div class="device-item">iPad (7th gen and later)</div>
-                                <div class="device-item">iPad mini (5th gen and later)</div>
+                                <div class="device-item">iPad Pro 11" (3rd gen, 2021) or later</div>
+                                <div class="device-item">iPad Pro 12.9" (5th gen, 2021) or later</div>
+                                <div class="device-item">iPad Air (4th gen, 2020) or later</div>
+                                <div class="device-item">iPad (9th gen, 2021) or later</div>
+                                <div class="device-item">iPad mini (6th gen, 2021) or later</div>
                             </div>
                         </div>
 
                         <div class="requirement-group">
                             <h4>macOS Sequoia <span class="version">15.6+</span></h4>
                             <div class="device-list">
-                                <div class="device-item">MacBook Air (M1, 2020 and later)</div>
-                                <div class="device-item">MacBook Pro (M1, 2020 and later)</div>
-                                <div class="device-item">iMac (24", M1, 2021 and later)</div>
-                                <div class="device-item">Mac mini (M1, 2020 and later)</div>
-                                <div class="device-item">Mac Studio (2022 and later)</div>
-                                <div class="device-item">Mac Pro (M2 Ultra, 2023)</div>
-                                <div class="device-item">Limited Intel Mac support (2018+)</div>
+                                <div class="device-item">MacBook Air (2020 or later)</div>
+                                <div class="device-item">MacBook Pro (2018 or later)*</div>
+                                <div class="device-item">iMac (2020 or later)</div>
+                                <div class="device-item">iMac Pro (2017)</div>
+                                <div class="device-item">Mac mini (2018 or later)</div>
+                                <div class="device-item">Mac Studio (2022 or later)</div>
+                                <div class="device-item">Mac Pro (2019 or later)*</div>
                             </div>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                *Intel models with AMD Radeon Pro 500-series GPUs are excluded
+                            </p>
                         </div>
 
                         <div class="requirement-group">
@@ -1575,19 +1552,6 @@
         </div>
     </section>
 
-    <!-- App Preview - Single Video -->
-    <section id="preview" class="app-preview">
-        <div class="container">
-            <h2 class="section-title">See It in Action</h2>
-            <div class="video-container">
-                <video class="preview-video" controls poster="app_preview_poster.jpg">
-                    <source src="comigpt_demo.mp4" type="video/mp4">
-                    <img src="app_preview_fallback.jpg" alt="ComiGPT App Preview" style="width: 100%; border-radius: 24px;">
-                </video>
-            </div>
-        </div>
-    </section>
-
     <!-- Download Section -->
     <section id="download" class="download-section">
         <div class="container">
@@ -1625,7 +1589,6 @@
                         <li><a href="#features">Features</a></li>
                         <li><a href="#compatibility">Compatibility</a></li>
                         <li><a href="#models">Models</a></li>
-                        <li><a href="#preview">Preview</a></li>
                         <li><a href="#download">Download</a></li>
                     </ul>
                 </div>
