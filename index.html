@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComiGPT - Private AI Chat</title>
+    <meta name="description" content="Private AI chat with local large language models. Fast, secure, and completely private on your Apple device.">
+    <meta name="keywords" content="AI chat, private AI, local AI, Apple AI, iOS AI, macOS AI, Metal 3">
     <style>
         * {
             margin: 0;
@@ -67,6 +69,1719 @@
             .hero h1 .main-title {
                 color: white !important;
                 -webkit-text-fill-color: white !important;
+                background: white !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Logo styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .download-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--primary-color)10, transparent 70%);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out;
+            border-radius: 28px;
+            overflow: hidden;
+        }
+
+        .hero-logo video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 28px;
+        }
+
+        .hero-logo video.dark-mode {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 .main-title {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #ff1b6b 0%, #45caff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        /* Features Section with Larger Screenshots */
+        .features {
+            padding: 80px 0;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-screenshot {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .feature-screenshot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-screenshot:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .feature-screenshot:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-image {
+            width: 350px;
+            height: auto;
+            margin: 0 auto 2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px var(--shadow);
+            position: relative;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .feature-screenshot h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-screenshot p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Compatibility Section */
+        .compatibility {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .compatibility-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .compatibility-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .compatibility-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px var(--shadow);
+        }
+
+        .compatibility-details {
+            text-align: left;
+        }
+
+        .system-requirements {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .requirement-group {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .requirement-group h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .requirement-group .version {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .device-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .device-item {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+        }
+
+        .special-note {
+            background: rgba(134, 134, 139, 0.1);
+            border: 1px solid rgba(134, 134, 139, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .special-note h5 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Models Section with Categories */
+        .models {
+            padding: 80px 0;
+        }
+
+        .model-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .category-btn.active {
+            background: var(--gradient);
+            color: white;
+            border: none;
+        }
+
+        .category-btn:hover:not(.active) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .model-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .model-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .model-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .model-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .model-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .model-size {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .model-type {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .model-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .model-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .spec-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .explore-more-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 3rem;
+            display: inline-block;
+        }
+
+        .explore-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .explore-more-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* App Preview - Single Video */
+        .app-preview {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px var(--shadow);
+        }
+
+        .preview-video {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            background: var(--background);
+        }
+
+        /* Download Section */
+        .download-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testflight-container {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testflight-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .beta-disclaimer {
+            background: rgba(134, 134, 139, 0.1);
+            border: 1px solid rgba(134, 134, 139, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: var(--background);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .compatibility-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .compatibility-details {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .features-grid, .models-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .model-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-image {
+                width: 250px;
+            }
+
+            .model-categories {
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .device-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glass morphism utilities */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+        }
+
+        /* Platform optimizations */
+        @supports (-webkit-backdrop-filter: blur(20px)) {
+            .glass-card, nav, .features, .app-preview {
+                -webkit-backdrop-filter: blur(20px);
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --border-light: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Focus indicators for accessibility */
+        button:focus-visible,
+        a:focus-visible,
+        .category-btn:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="ComiGPTLight.png" alt="ComiGPT Logo">
+                    </div>
+                    <div class="logo">ComiGPT</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#compatibility">Compatibility</a></li>
+                    <li><a href="#models">Models</a></li>
+                    <li><a href="#preview">Preview</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+                <a href="#download" class="download-btn">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-logo">
+                <video autoplay loop muted playsinline>
+                    <source src="ComiGPTAnimatedLogo.mp4" type="video/mp4">
+                    <img src="ComiGPTLight.png" alt="ComiGPT Logo">
+                </video>
+                <video autoplay loop muted playsinline class="dark-mode">
+                    <source src="ComiGPTAnimatedLogoDark.mp4" type="video/mp4">
+                </video>
+            </div>
+            <h1><span class="main-title">Private AI Chat</span><br><span class="gradient-text">Reimagined</span></h1>
+            <p>Chat with private and local large language models. Fast, secure, and completely private on your Apple device.</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn-primary">Download Now</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section with Larger Screenshots -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">App Features</h2>
+            <div class="features-grid">
+                <div class="feature-screenshot">
+                    <div class="feature-image">
+                        <img src="feature1.png" alt="Chat Interface" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Intuitive Chat Interface</h3>
+                    <p>Clean, modern chat interface designed for seamless conversations with AI models.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <div class="feature-image">
+                        <img src="feature2.png" alt="Model Selection" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Multiple AI Models</h3>
+                    <p>Choose from a variety of specialized models for different tasks and use cases.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <div class="feature-image">
+                        <img src="feature3.png" alt="Privacy Settings" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Complete Privacy</h3>
+                    <p>All conversations stay on your device. No data is sent to external servers.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <div class="feature-image">
+                        <img src="feature4.png" alt="Image Support" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Image Understanding</h3>
+                    <p>Upload images and have natural conversations about visual content.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <div class="feature-image">
+                        <img src="feature5.png" alt="Search Function" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Powerful Search</h3>
+                    <p>Find any conversation or message instantly with advanced search capabilities.</p>
+                </div>
+                <div class="feature-screenshot">
+                    <div class="feature-image">
+                        <img src="feature6.png" alt="Settings" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Customizable Experience</h3>
+                    <p>Personalize your AI experience with extensive customization options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility Section -->
+    <section id="compatibility" class="compatibility">
+        <div class="container">
+            <h2 class="section-title">Device Compatibility</h2>
+            <div class="compatibility-content">
+                <div class="compatibility-visual">
+                    <img src="OS_support.png" alt="OS Support" class="compatibility-image" onerror="this.style.display='none'">
+                </div>
+                <div class="compatibility-details">
+                    <div class="system-requirements">
+                        <div class="requirement-group">
+                            <h4>iOS <span class="version">18.6+</span></h4>
+                            <div class="device-list">
+                                <div class="device-item">iPhone XS, iPhone XS Max, iPhone XR</div>
+                                <div class="device-item">iPhone 11 series</div>
+                                <div class="device-item">iPhone SE (2nd & 3rd gen)</div>
+                                <div class="device-item">iPhone 12 series</div>
+                                <div class="device-item">iPhone 13 series</div>
+                                <div class="device-item">iPhone 14 series</div>
+                                <div class="device-item">iPhone 15 series</div>
+                                <div class="device-item">iPhone 16 series</div>
+                            </div>
+                        </div>
+
+                        <div class="requirement-group">
+                            <h4>iPadOS <span class="version">18.6+</span></h4>
+                            <div class="device-list">
+                                <div class="device-item">iPad Pro (2018 and later)</div>
+                                <div class="device-item">iPad Air (3rd gen and later)</div>
+                                <div class="device-item">iPad (7th gen and later)</div>
+                                <div class="device-item">iPad mini (5th gen and later)</div>
+                            </div>
+                        </div>
+
+                        <div class="requirement-group">
+                            <h4>macOS Sequoia <span class="version">15.6+</span></h4>
+                            <div class="device-list">
+                                <div class="device-item">MacBook Air (M1, 2020 and later)</div>
+                                <div class="device-item">MacBook Pro (M1, 2020 and later)</div>
+                                <div class="device-item">iMac (24", M1, 2021 and later)</div>
+                                <div class="device-item">Mac mini (M1, 2020 and later)</div>
+                                <div class="device-item">Mac Studio (2022 and later)</div>
+                                <div class="device-item">Mac Pro (M2 Ultra, 2023)</div>
+                                <div class="device-item">Limited Intel Mac support (2018+)</div>
+                            </div>
+                        </div>
+
+                        <div class="requirement-group">
+                            <h4>visionOS <span class="version">2.0+</span></h4>
+                            <div class="device-list">
+                                <div class="device-item">Apple Vision Pro (2024)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="special-note">
+                        <h5>Metal 3 Required</h5>
+                        <p>ComiGPT requires Metal 3 for optimal AI performance. All listed devices support Metal 3 with their respective OS versions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Section with Categories -->
+    <section id="models" class="models">
+        <div class="container">
+            <h2 class="section-title">AI Models</h2>
+            <div class="model-categories">
+                <button class="category-btn active" onclick="showCategory('general')">General Purpose</button>
+                <button class="category-btn" onclick="showCategory('reasoning')">Reasoning</button>
+                <button class="category-btn" onclick="showCategory('vision')">Vision</button>
+                <button class="category-btn" onclick="showCategory('multimodal')">Multimodal</button>
+            </div>
+
+            <!-- General Purpose Models -->
+            <div id="general-models" class="models-grid">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Llama 3.2 1B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">0.7GB</div>
+                    </div>
+                    <div class="model-description">
+                        Meta's lightweight model optimized for edge devices with 128K context window. Perfect for everyday conversations, instruction following, and quick tasks with minimal resource usage.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.2B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Quick Tasks</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">Multilingual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Llama 3.2 3B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">1.7GB</div>
+                    </div>
+                    <div class="model-description">
+                        More capable version with enhanced reasoning abilities and 128K context. Ideal for complex conversations and detailed analysis while maintaining efficiency on Apple devices.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.2B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Detailed Analysis</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">Multilingual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Phi 3.5 Mini</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">2.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Microsoft's efficient model with 128K context and strong coding capabilities. Great balance of performance and efficiency for programming tasks and instruction following.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.8B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Coding</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">22 Languages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Llama 3.1 8B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">4.2GB</div>
+                    </div>
+                    <div class="model-description">
+                        Larger, more capable model with superior language understanding and generation. Excellent for complex tasks, creative writing, and professional use cases requiring higher intelligence.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">8.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Complex Tasks</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">Multilingual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiGPT</a>
+                </div>
+            </div>
+
+            <!-- Reasoning Models -->
+            <div id="reasoning-models" class="models-grid" style="display: none;">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">DeepSeek R1 Distill 1.5B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">1.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Advanced reasoning model distilled from DeepSeek R1. Features chain-of-thought reasoning with &lt;think&gt; tags, excelling at mathematical problems and step-by-step logical reasoning.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.5B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Math & Logic</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Chain-of-Thought</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen3 1.7B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">0.9GB</div>
+                    </div>
+                    <div class="model-description">
+                        Compact reasoning model with hybrid thinking modes and 256K context. Efficient for mathematical reasoning and logical problem-solving with minimal resource requirements.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.7B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">256K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Efficient Reasoning</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">119 Languages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen3 4B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">2.1GB</div>
+                    </div>
+                    <div class="model-description">
+                        Alibaba's hybrid reasoning model with thinking and non-thinking modes. Features 256K context window and excels at complex problem-solving, coding, and multilingual tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">4.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">256K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Problem Solving</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">119 Languages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">DeepSeek R1 7B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">4.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Larger DeepSeek reasoning model with enhanced mathematical and logical capabilities. Superior performance on complex reasoning benchmarks with detailed step-by-step problem solving.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">7.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Advanced Math</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Deep Reasoning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiGPT</a>
+                </div>
+            </div>
+
+            <!-- Vision Models -->
+            <div id="vision-models" class="models-grid" style="display: none;">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen2-VL 2B</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">1.2GB</div>
+                    </div>
+                    <div class="model-description">
+                        Compact vision-language model for image understanding and visual reasoning. Excellent for document analysis, chart interpretation, and general image comprehension tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">2.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">448x448</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Document Analysis</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">SmolVLM Instruct</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">1.4GB</div>
+                    </div>
+                    <div class="model-description">
+                        Lightweight yet powerful vision model optimized for mobile deployment. Great for image captioning, visual question answering, and general image understanding tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">2.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">384x384</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Mobile Vision</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Optimization</span>
+                            <span class="spec-value">Edge Devices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen2.5-VL 3B</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">2.9GB</div>
+                    </div>
+                    <div class="model-description">
+                        Enhanced vision model with improved understanding capabilities. Superior performance on complex visual reasoning tasks and multi-image understanding with detailed analysis.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">448x448</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Complex Vision</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">PaliGemma 3B</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">3.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Google's vision model for advanced image reasoning and understanding. Excels at complex visual tasks, spatial reasoning, and detailed image analysis with high accuracy.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">448x448</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Image Reasoning</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Spatial Reasoning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiGPT</a>
+                </div>
+            </div>
+
+            <!-- Multimodal Models -->
+            <div id="multimodal-models" class="models-grid" style="display: none;">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">SmolVLM 500M</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">1.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Advanced multimodal model supporting both video and image understanding. Features real-time video processing and can handle multiple frames for temporal reasoning and analysis.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">500M</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Modalities</span>
+                            <span class="spec-value">Text, Image, Video</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Video Analysis</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Multi-frame</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Gemma 3 4B</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">2.8GB</div>
+                    </div>
+                    <div class="model-description">
+                        Google's multimodal model with strong text and image understanding. Excellent for combined text-visual tasks, document processing with images, and cross-modal reasoning.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">4.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">896x896</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Text + Image</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">8K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen2.5-VL 3B</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">2.9GB</div>
+                    </div>
+                    <div class="model-description">
+                        Versatile multimodal model with excellent text-image integration. Superior performance on document understanding, visual question answering, and cross-modal reasoning tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Modalities</span>
+                            <span class="spec-value">Text, Image</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Document + Vision</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">PaliGemma 3B</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">3.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Advanced multimodal model for complex reasoning across text and images. Excels at spatial understanding, visual grounding, and sophisticated multimodal conversation flows.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Modalities</span>
+                            <span class="spec-value">Text, Image</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Visual Grounding</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Spatial Understanding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiGPT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview - Single Video -->
+    <section id="preview" class="app-preview">
+        <div class="container">
+            <h2 class="section-title">See It in Action</h2>
+            <div class="video-container">
+                <video class="preview-video" controls poster="app_preview_poster.jpg">
+                    <source src="comigpt_demo.mp4" type="video/mp4">
+                    <img src="app_preview_fallback.jpg" alt="ComiGPT App Preview" style="width: 100%; border-radius: 24px;">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <h2 class="section-title">Get Started Today</h2>
+            <div class="testflight-container">
+                <div class="testflight-logo">TF</div>
+                <h3>Available on TestFlight</h3>
+                <p>Experience the future of private AI chat on your Apple device.</p>
+                
+                <div class="beta-disclaimer">
+                    <strong>Beta Software Notice:</strong><br>
+                    This is beta software and may contain bugs or incomplete features. Your feedback helps us improve the experience for everyone.
+                </div>
+                
+                <a href="#" class="btn-primary" style="margin-top: 1rem; display: inline-block;">
+                    Download on TestFlight
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ComiGPT</h4>
+                    <p>Private AI chat for everyone.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#compatibility">Compatibility</a></li>
+                        <li><a href="#models">Models</a></li>
+                        <li><a href="#preview">Preview</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--glass); padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2025 ComiGPT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Model category switching
+        function showCategory(category) {
+            // Hide all model grids
+            const allGrids = document.querySelectorAll('.models-grid');
+            allGrids.forEach(grid => {
+                grid.style.display = 'none';
+            });
+
+            // Remove active class from all buttons
+            const allButtons = document.querySelectorAll('.category-btn');
+            allButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected category
+            const targetGrid = document.getElementById(category + '-models');
+            if (targetGrid) {
+                targetGrid.style.display = 'grid';
+            }
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'var(--surface)';
+                nav.style.boxShadow = '0 4px 20px var(--shadow)';
+            } else {
+                nav.style.backgroundColor = 'var(--surface)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature screenshots and model cards for staggered animation
+        document.querySelectorAll('.feature-screenshot, .model-card, .requirement-group').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `all 0.4s ease ${index * 0.05}s`;
+            observer.observe(card);
+        });
+
+        // Add hover effects for interactive elements
+        document.querySelectorAll('.feature-screenshot, .model-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Dark mode logo switching
+        function updateVideoSources() {
+            const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const regularVideo = document.querySelector('.hero-logo video:not(.dark-mode)');
+            const darkModeVideo = document.querySelector('.hero-logo video.dark-mode');
+            
+            if (isDarkMode) {
+                if (regularVideo) regularVideo.style.display = 'none';
+                if (darkModeVideo) darkModeVideo.style.display = 'block';
+            } else {
+                if (regularVideo) regularVideo.style.display = 'block';
+                if (darkModeVideo) darkModeVideo.style.display = 'none';
+            }
+        }
+
+        // Listen for changes in color scheme
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateVideoSources);
+        }
+
+        // Initialize video display
+        updateVideoSources();
+
+        // Performance optimization: Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    </script>
+</body>
+</html>                -webkit-text-fill-color: white !important;
                 background: white !important;
                 -webkit-background-clip: text !important;
                 background-clip: text !important;
