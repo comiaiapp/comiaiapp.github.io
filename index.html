@@ -304,9 +304,7 @@
         /* Features Section with Larger Screenshots */
         .features {
             padding: 80px 0;
-            background: var(--surface);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: transparent; /* Changed from var(--surface) to transparent */
         }
 
         .section-title {
@@ -328,10 +326,8 @@
         }
 
         .feature-screenshot {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-light);
+            background: transparent; /* Removed glass background */
+            border: none; /* Removed border */
             border-radius: 24px;
             padding: 2rem;
             transition: all 0.3s ease;
@@ -354,7 +350,6 @@
 
         .feature-screenshot:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--shadow);
         }
 
         .feature-screenshot:hover::before {
@@ -369,6 +364,7 @@
             overflow: hidden;
             box-shadow: 0 15px 40px var(--shadow);
             position: relative;
+            background: transparent; /* Ensure no background */
         }
 
         .feature-image img {
@@ -376,6 +372,7 @@
             height: auto;
             display: block;
             border-radius: 16px;
+            background: transparent; /* Ensure no background */
         }
 
         .feature-screenshot h3 {
@@ -395,6 +392,7 @@
         .compatibility {
             padding: 80px 0;
             text-align: center;
+            background: transparent; /* Ensure transparent background */
         }
 
         .compatibility-content {
@@ -409,6 +407,7 @@
             justify-content: center;
             align-items: center;
             order: 1;
+            background: transparent; /* Ensure no background */
         }
 
         .compatibility-image {
@@ -417,6 +416,7 @@
             height: auto;
             border-radius: 24px;
             box-shadow: 0 25px 50px var(--shadow);
+            background: transparent; /* Ensure no background */
         }
 
         .compatibility-details {
@@ -973,7 +973,7 @@
 
         /* Platform optimizations */
         @supports (-webkit-backdrop-filter: blur(20px)) {
-            .glass-card, nav, .features, .app-preview {
+            .glass-card, nav, .qa-section {
                 -webkit-backdrop-filter: blur(20px);
             }
         }
