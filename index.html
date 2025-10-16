@@ -473,6 +473,9 @@
         /* Models Section */
         .models {
             padding: 80px 0;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .model-categories {
@@ -655,9 +658,6 @@
         /* Q&A Section */
         .qa-section {
             padding: 80px 0;
-            background: var(--surface);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
 
         .qa-grid {
@@ -718,6 +718,9 @@
         .contact-section {
             padding: 80px 0;
             text-align: center;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .contact-container {
@@ -775,9 +778,6 @@
         .download-section {
             padding: 80px 0;
             text-align: center;
-            background: var(--surface);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
 
         .testflight-container {
@@ -1126,7 +1126,7 @@
         </div>
     </section>
 
-    <!-- Models Section - Truncated for brevity, includes all 4 model categories -->
+    <!-- Models Section with Categories -->
     <section id="models" class="models">
         <div class="container">
             <h2 class="section-title">AI Models</h2>
@@ -1137,12 +1137,671 @@
                 <button class="category-btn" onclick="showCategory('multimodal')">Multimodal</button>
             </div>
 
-            <!-- Model grids here - same as before -->
-            <!-- I'll include just the structure to keep this concise -->
+            <!-- General Purpose Models -->
+            <div id="general-models" class="models-grid">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Llama 3.2 1B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">0.7GB</div>
+                    </div>
+                    <div class="model-description">
+                        Meta's lightweight model optimized for edge devices with 128K context window. Perfect for everyday conversations, instruction following, and quick tasks with minimal resource usage.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.2B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Quick Tasks</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">Multilingual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Llama 3.2 3B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">1.7GB</div>
+                    </div>
+                    <div class="model-description">
+                        More capable version with enhanced reasoning abilities and 128K context. Ideal for complex conversations and detailed analysis while maintaining efficiency on Apple devices.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.2B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Detailed Analysis</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">Multilingual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Phi 3.5 Mini</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">2.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Microsoft's efficient model with 128K context and strong coding capabilities. Great balance of performance and efficiency for programming tasks and instruction following.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.8B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Coding</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">22 Languages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Llama 3.1 8B</div>
+                            <div class="model-type">General Purpose</div>
+                        </div>
+                        <div class="model-size">4.2GB</div>
+                    </div>
+                    <div class="model-description">
+                        Larger, more capable model with superior language understanding and generation. Excellent for complex tasks, creative writing, and professional use cases requiring higher intelligence.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">8.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">128K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Complex Tasks</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">Multilingual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiAI</a>
+                </div>
+            </div>
+
+            <!-- Reasoning Models -->
+            <div id="reasoning-models" class="models-grid" style="display: none;">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">DeepSeek R1 Distill 1.5B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">1.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Advanced reasoning model distilled from DeepSeek R1. Features chain-of-thought reasoning with &lt;think&gt; tags, excelling at mathematical problems and step-by-step logical reasoning.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.5B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Math & Logic</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Chain-of-Thought</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen3 1.7B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">0.9GB</div>
+                    </div>
+                    <div class="model-description">
+                        Compact reasoning model with hybrid thinking modes and 256K context. Efficient for mathematical reasoning and logical problem-solving with minimal resource requirements.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">1.7B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">256K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Efficient Reasoning</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">119 Languages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen3 4B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">2.1GB</div>
+                    </div>
+                    <div class="model-description">
+                        Alibaba's hybrid reasoning model with thinking and non-thinking modes. Features 256K context window and excels at complex problem-solving, coding, and multilingual tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">4.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">256K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Problem Solving</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Languages</span>
+                            <span class="spec-value">119 Languages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">DeepSeek R1 7B</div>
+                            <div class="model-type">Reasoning</div>
+                        </div>
+                        <div class="model-size">4.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Larger DeepSeek reasoning model with enhanced mathematical and logical capabilities. Superior performance on complex reasoning benchmarks with detailed step-by-step problem solving.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">7.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Advanced Math</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Deep Reasoning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiAI</a>
+                </div>
+            </div>
+
+            <!-- Vision Models -->
+            <div id="vision-models" class="models-grid" style="display: none;">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen2-VL 2B</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">1.2GB</div>
+                    </div>
+                    <div class="model-description">
+                        Compact vision-language model for image understanding and visual reasoning. Excellent for document analysis, chart interpretation, and general image comprehension tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">2.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">448x448</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Document Analysis</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">SmolVLM Instruct</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">1.4GB</div>
+                    </div>
+                    <div class="model-description">
+                        Lightweight yet powerful vision model optimized for mobile deployment. Great for image captioning, visual question answering, and general image understanding tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">2.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">384x384</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Mobile Vision</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Optimization</span>
+                            <span class="spec-value">Edge Devices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen2.5-VL 3B</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">2.9GB</div>
+                    </div>
+                    <div class="model-description">
+                        Enhanced vision model with improved understanding capabilities. Superior performance on complex visual reasoning tasks and multi-image understanding with detailed analysis.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">448x448</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Complex Vision</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">PaliGemma 3B</div>
+                            <div class="model-type">Vision</div>
+                        </div>
+                        <div class="model-size">3.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Google's vision model for advanced image reasoning and understanding. Excels at complex visual tasks, spatial reasoning, and detailed image analysis with high accuracy.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">448x448</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Image Reasoning</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Spatial Reasoning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiAI</a>
+                </div>
+            </div>
+
+            <!-- Multimodal Models -->
+            <div id="multimodal-models" class="models-grid" style="display: none;">
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">SmolVLM 500M</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">1.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Advanced multimodal model supporting both video and image understanding. Features real-time video processing and can handle multiple frames for temporal reasoning and analysis.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">500M</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Modalities</span>
+                            <span class="spec-value">Text, Image, Video</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Video Analysis</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Multi-frame</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Gemma 3 4B</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">2.8GB</div>
+                    </div>
+                    <div class="model-description">
+                        Google's multimodal model with strong text and image understanding. Excellent for combined text-visual tasks, document processing with images, and cross-modal reasoning.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">4.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Image Size</span>
+                            <span class="spec-value">896x896</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Text + Image</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">8K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">Qwen2.5-VL 3B</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">2.9GB</div>
+                    </div>
+                    <div class="model-description">
+                        Versatile multimodal model with excellent text-image integration. Superior performance on document understanding, visual question answering, and cross-modal reasoning tasks.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Modalities</span>
+                            <span class="spec-value">Text, Image</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Document + Vision</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Context Length</span>
+                            <span class="spec-value">32K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-name">PaliGemma 3B</div>
+                            <div class="model-type">Multimodal</div>
+                        </div>
+                        <div class="model-size">3.0GB</div>
+                    </div>
+                    <div class="model-description">
+                        Advanced multimodal model for complex reasoning across text and images. Excels at spatial understanding, visual grounding, and sophisticated multimodal conversation flows.
+                    </div>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Parameters</span>
+                            <span class="spec-value">3.0B</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Modalities</span>
+                            <span class="spec-value">Text, Image</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Visual Grounding</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Special Feature</span>
+                            <span class="spec-value">Spatial Understanding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explore-more-container">
+                    <a href="#download" class="explore-more-btn">Explore More Models in ComiAI</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Q&A, Contact, Download, Footer sections - same as before -->
+    <!-- Q&A Section -->
+    <section id="qa" class="qa-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="qa-grid">
+                <div class="qa-item">
+                    <h3 class="qa-question">What is the difference between the iOS and macOS versions?</h3>
+                    <div class="qa-answer">
+                        Both platforms allow you to select and download AI models. The macOS version supports larger models thanks to greater computing resources, while the iOS version provides models optimized for mobile performance. Regardless of platform, both versions prioritize privacy and offline processing.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Do I need an internet connection?</h3>
+                    <div class="qa-answer">
+                        An internet connection is only required for the initial app download, for downloading additional models and if you choose to enable the web search feature for more relevant answers. Once the model is installed, all of the generation happens on your device. You can use the app anywhere—on a plane, in remote areas, or simply offline for maximum privacy.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How does offline AI work?</h3>
+                    <div class="qa-answer">
+                        Once an AI model is downloaded, all processing takes place locally on your device. This includes text generation, media analysis and other functions. No internet connection is required, and no data leaves your device.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">What types of AI models are supported?</h3>
+                    <div class="qa-answer">
+                        The app supports a wide range of open-source large language models, including:
+                        <ul>
+                            <li><strong>Regular models</strong></li>
+                            <li><strong>Reasoning models</strong></li>
+                            <li><strong>Vision models</strong> (image processing)</li>
+                            <li><strong>Multimodal models</strong> (image and video processing)</li>
+                        </ul>
+                        On iOS, you can choose from optimized models such as Llama, Qwen, SmolLM, Gemma, and others. On macOS, additional larger models are available, leveraging desktop hardware for greater performance.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Can I work with images when using regular or reasoning models?</h3>
+                    <div class="qa-answer">
+                        Yes. When you upload an image while using a regular or reasoning model, the app automatically extracts text from the image and provides it to the model for processing. No additional hassle of copying the text manually.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Is my data private?</h3>
+                    <div class="qa-answer">
+                        Yes. All conversations are processed locally on your device, and no data is collected or stored externally. The AI model runs fully offline, ensuring that your prompts, conversations, and generated content never leave your device or reach third parties.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Is my conversation history private?</h3>
+                    <div class="qa-answer">
+                        Absolutely. Conversation history is stored locally on your device and encrypted for your security. No data is collected, no accounts are required, and no servers are involved. Privacy is ensured by design, not just by policy.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How does the conversation history feature work?</h3>
+                    <div class="qa-answer">
+                        Conversations are automatically saved locally, enabling you to revisit, review, and continue previous chats at any time. You can delete individual conversations, clear all history, or share selected chats—maintaining full control over your data.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How can I search through my chats?</h3>
+                    <div class="qa-answer">
+                        The app offers advanced search capabilities, allowing you to search through both your own messages and AI-generated responses. Text extracted from images (processed by regular or reasoning models) is also searchable.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Can I use the app with Apple Shortcuts?</h3>
+                    <div class="qa-answer">
+                        Yes. The app integrates seamlessly with Apple Shortcuts on both iOS and macOS. You can select AI models, adjust parameters, and incorporate AI into your automation workflows. This flexibility allows you to balance local models for privacy with cloud models for advanced capabilities, tailoring each workflow to your needs.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">How is this different from ChatGPT and other LLMs?</h3>
+                    <div class="qa-answer">
+                        Unlike ChatGPT, which operates in the cloud, this app runs AI models directly on your device. This provides complete privacy, eliminates recurring subscription costs, and allows you to use AI features without an internet connection. On macOS, larger models bring capabilities closer to cloud-based services. This allows you to truly own and control your content.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <h3 class="qa-question">Will the app drain my battery?</h3>
+                    <div class="qa-answer">
+                        The app is optimized to take advantage of Apple's Neural Engine on both iOS and macOS. On iOS, specially optimized models balance performance with power efficiency. On macOS, additional larger models are available. While extended use of larger models may increase power consumption and device temperature, the app is designed for efficient resource usage.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-icon">✉️</div>
+                <h3>Get in Touch</h3>
+                <p class="contact-description">
+                    Have questions, feedback, or need support? We'd love to hear from you. Reach out to us directly for assistance with ComiAI.
+                </p>
+                
+                <a href="mailto:jakub.vyhnanek@gmail.com?subject=ComiAI Inquiry" class="contact-btn">
+                    Send Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <h2 class="section-title">Get Started Today</h2>
+            <div class="testflight-container">
+                <div class="testflight-logo">
+                    <img src="testflight.png" alt="TestFlight Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <h3>Available on TestFlight</h3>
+                <p>Experience the future of private AI chat on your Apple device.</p>
+                
+                <div class="beta-disclaimer">
+                    <strong>Beta Software Notice:</strong><br>
+                    This is beta software and may contain bugs or incomplete features. Your feedback helps us improve the experience for everyone.
+                </div>
+                
+                <a href="#" class="btn-primary" style="margin-top: 1rem; display: inline-block;">
+                    Download on TestFlight
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -1159,9 +1818,6 @@
                         <li><a href="#compatibility">Compatibility</a></li>
                         <li><a href="#models">Models</a></li>
                         <li><a href="#qa">Q&A</a></li>
-                        <li><a href="terms.html">Terms</a></li>
-                        <li><a href="privacy.html">Privacy</a></li>
-                        <li><a href="#contact">Contact</a></li>
                         <li><a href="#download">Download</a></li>
                     </ul>
                 </div>
@@ -1211,6 +1867,37 @@
             } else {
                 nav.style.boxShadow = 'none';
             }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-screenshot, .model-card, .requirement-group').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `all 0.4s ease ${index * 0.05}s`;
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.feature-screenshot, .model-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
 
         function updateVideoSources() {
