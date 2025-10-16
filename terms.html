@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="ComiAIDark.png">
+    <title>Terms & Conditions - ComiAI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c2c2e;
+            --secondary-color: #48484a;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --background: #fbfbfd;
+            --surface: rgba(255, 255, 255, 0.8);
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #2c2c2e 0%, #48484a 100%);
+            --border-light: rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-primary: #f5f5f7;
+                --text-secondary: #a1a1a6;
+                --background: #000000;
+                --surface: rgba(28, 28, 30, 0.8);
+                --glass: rgba(255, 255, 255, 0.05);
+                --shadow: rgba(0, 0, 0, 0.3);
+                --border-light: rgba(255, 255, 255, 0.1);
+            }
+
+            .logo-icon img {
+                content: url('ComiAIDark.png');
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 120px 0 80px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .legal-content {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
+        .legal-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .legal-content h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .legal-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .legal-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .legal-content a {
+            color: var(--text-primary);
+            text-decoration: underline;
+        }
+
+        .legal-content a:hover {
+            color: var(--primary-color);
+        }
+
+        .effective-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: var(--background);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .legal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .main-content {
+                padding: 100px 0 60px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <div class="logo-icon">
+                    <img src="ComiAILight.png" alt="ComiAI Logo">
+                </div>
+                <div class="logo">ComiAI</div>
+            </a>
+            <a href="index.html" class="back-btn">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Terms & Conditions</h1>
+            
+            <div class="legal-content">
+                <p>These terms and conditions apply to the ComiAI app (hereby referred to as "Application") for mobile devices that was created by Jakub Vyhnánek (hereby referred to as "Service Provider") as a paid service.</p>
+
+                <p>Upon downloading or utilizing the Application, you are automatically agreeing to the following terms. It is strongly advised that you thoroughly read and understand these terms prior to using the Application. Unauthorized copying, modification of the Application, any part of the Application, or our trademarks is strictly prohibited. Any attempts to extract the source code of the Application, translate the Application into other languages, or create derivative versions are not permitted. All trademarks, copyrights, database rights, and other intellectual property rights related to the Application remain the property of the Service Provider.</p>
+
+                <p>The Service Provider is dedicated to ensuring that the Application is as beneficial and efficient as possible. As such, they reserve the right to modify the Application or charge for their services at any time and for any reason. The Service Provider assures you that any charges for the Application or its services will be clearly communicated to you.</p>
+
+                <p>The Application stores and processes personal data that you have provided to the Service Provider in order to provide the Service. It is your responsibility to maintain the security of your phone and access to the Application. The Service Provider strongly advises against jailbreaking or rooting your phone, which involves removing software restrictions and limitations imposed by the official operating system of your device. Such actions could expose your phone to malware, viruses, malicious programs, compromise your phone's security features, and may result in the Application not functioning correctly or at all.</p>
+
+                <h3>Web Search Feature</h3>
+                <p>When enabled, the web search feature allows the Application to access online information to enhance responses. This feature requires an active internet connection and may consume data. You maintain full control over whether this feature is enabled and can toggle it on or off at any time through the Application settings.</p>
+
+                <h3>Third-Party Services</h3>
+                <p>Please note that the Application utilizes third-party services that have their own Terms and Conditions. Below are the links to the Terms and Conditions of the third-party service providers used by the Application:</p>
+                <ul>
+                    <li>Hugging Face</li>
+                </ul>
+
+                <h3>AI Models Usage</h3>
+                <p>By downloading or using AI models within the Application, you agree to comply with the respective usage policies.</p>
+
+                <h3>Connectivity and Data Usage</h3>
+                <p>Please be aware that the Service Provider does not assume responsibility for certain aspects. Some functions of the Application require an active internet connection. The Service Provider cannot be held responsible if the Application does not function at full capacity due to lack of access to Wi-Fi or if you have exhausted your data allowance.</p>
+
+                <h3>Changes to These Terms and Conditions</h3>
+                <p>The Service Provider may periodically update their Terms and Conditions. Therefore, you are advised to review this page regularly for any changes.</p>
+                <p class="effective-date">These terms and conditions are effective as of September 1, 2025.</p>
+
+                <h3>Contact Us</h3>
+                <p>If you have any questions or suggestions about the Terms and Conditions, please do not hesitate to contact the Service Provider at:</p>
+                <p><a href="mailto:jakub.vyhnanek@gmail.com">jakub.vyhnanek@gmail.com</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ComiAI. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
